@@ -3,34 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Idol Clone</title>
+    <title>3dMMMM</title>
     <style>
-        body { text-align: center; font-family: Arial, sans-serif; }
+        body { 
+            text-align: center; 
+            font-family: "Comic Sans MS", cursive, sans-serif; 
+            background-color: #333333; 
+            color: #00FF00; 
+        }
         .scene { width: 80%; max-width: 800px; position: relative; }
         .clue { position: absolute; width: 50px; height: 50px; cursor: pointer; }
-        .popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid black; }
+        .popup { 
+            display: none; 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            background: #333333; 
+            padding: 20px; 
+            border: 1px solid black; 
+            color: #00FF00;
+        }
         .popup img { max-width: 100%; margin-top: 10px; }
         .word-bank { margin-top: 20px; }
-        .word { display: inline-block; padding: 10px; background: lightgray; margin: 5px; cursor: grab; }
+        .word { 
+            display: inline-block; 
+            padding: 10px; 
+            background: darkgray; 
+            margin: 5px; 
+            cursor: grab; 
+            color: #FFFF00;
+        }
         .character-identification { margin-top: 20px; }
         .character { display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
-        .character img { width: 50px; height: 50px; margin-right: 10px; }
+        .character img { max-width: none; width: auto; height: auto; margin-right: 10px; }
         .madlib { margin-top: 20px; }
-        .blank { display: inline-block; width: 100px; height: 30px; border: 1px solid black; text-align: center; line-height: 30px; background: white; }
-        #win-message, #characters-solved-message { display: none; font-size: 24px; color: green; }
+        .blank { 
+            display: inline-block; 
+            width: 100px; 
+            height: 30px; 
+            border: 1px solid black; 
+            text-align: center; 
+            line-height: 30px; 
+            background: white; 
+            color: black;
+        }
+        #win-message, #characters-solved-message { 
+            display: none; 
+            font-size: 24px; 
+            color: #FFFF00;
+        }
         .clue img { width: 100%; height: 100%; }
         .clue.unclicked img { content: url('clue-animation-unclicked.gif'); }
         .clue.clicked img { content: url('clue-animation-clicked.gif'); }
     </style>
 </head>
 <body>
-    <h1>Golden Idol Clone</h1>
+    <h1>3d Movie Maker Murder Mystery</h1>
     <div class="scene">
         <img src="scene.gif" alt="Scene" width="100%">
-        <div class="clue unclicked" style="top: 30%; left: 40%;" onclick="showPopup(this, 'A blood-stained knife.', 'knife.png')">
+        <div class="clue unclicked" style="top: 60%; left: 55%;" onclick="showPopup(this, `A driver's license.`, 'driverslicense.gif')">
             <img src="clue-animation-unclicked.gif" alt="Clue Animation">
         </div>
-        <div class="clue unclicked" style="top: 50%; left: 60%;" onclick="showPopup(this, 'A suspicious letter.', 'letter.png')">
+        <div class="clue unclicked" style="top: 66%; left: 40%;" onclick="showPopup(this, `A bloody candlestick.`)">
+            <img src="clue-animation-unclicked.gif" alt="Clue Animation">
+        </div>
+        <div class="clue unclicked" style="top: 83%; left: 18%;" onclick="showPopup(this, `The man is not breathing and is bleeding from his head.`,'deadguy.gif')">
+            <img src="clue-animation-unclicked.gif" alt="Clue Animation">
+        </div>
+        <div class="clue unclicked" style="top: 50%; left: 52%;" onclick="showPopup(this, `''Hahahaha! I'm so glad I murdered you, John Doe!''`,'runningguy.gif')">
             <img src="clue-animation-unclicked.gif" alt="Clue Animation">
         </div>
     </div>
@@ -45,17 +86,27 @@
         <h2>Word Bank</h2>
         <div class="word" draggable="true" ondragstart="drag(event)" id="word1">John</div>
         <div class="word" draggable="true" ondragstart="drag(event)" id="word2">Doe</div>
-        <div class="word" draggable="true" ondragstart="drag(event)" id="word3">Murder</div>
-        <div class="word" draggable="true" ondragstart="drag(event)" id="word4">Knife</div>
-        <div class="word" draggable="true" ondragstart="drag(event)" id="word5">Suspect</div>
+        <div class="word" draggable="true" ondragstart="drag(event)" id="word3">Jack</div>
+        <div class="word" draggable="true" ondragstart="drag(event)" id="word4">Denny</div>
+        <div class="word" draggable="true" ondragstart="drag(event)" id="word5">Candlestick</div>
+        <div class="word" draggable="true" ondragstart="drag(event)" id="word6">Knife</div>
+        <div class="word" draggable="true" ondragstart="drag(event)" id="word7">Gun</div>
+        <div class="word" draggable="true" ondragstart="drag(event)" id="word8">Wrench</div>
+        <div class="word" draggable="true" ondragstart="drag(event)" id="word9">Michael</div>
+        <div class="word" draggable="true" ondragstart="drag(event)" id="word10">Davis</div>
     </div>
     
     <div class="character-identification">
         <h2>Identify the Characters:</h2>
         <div class="character">
-            <img src="character1.png" alt="Character 1">
+            <img src="johndoe.gif" alt="Character 1" width="200" height="200">
             <span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)" id="first1"></span>
             <span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)" id="last1"></span>
+        </div>
+        <div class="character">
+            <img src="jackdenny.gif" alt="Character 2" width="200" height="200">
+            <span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)" id="first2"></span>
+            <span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)" id="last2"></span>
         </div>
         <button onclick="checkCharacters()">Submit</button>
     </div>
@@ -63,17 +114,51 @@
     
     <div class="madlib">
         <h2>Fill in the blanks:</h2>
-        <p>The victim was killed with a <span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)" id="slot1"></span> and the main suspect is a <span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)" id="slot2"></span>.</p>
+        <p><span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)" id="slot1"></span> <span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)" id="slot2"></span> was killed with a <span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)" id="slot3"></span> by <span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)" id="slot4"></span> <span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)" id="slot5"></span>.</p>
         <button onclick="checkSolution()">Submit</button>
     </div>
     
     <p id="win-message">Good job! You solved the mystery!</p>
     
     <script>
-        const correctCharacters = { first1: "word1", last1: "word2" };
-        const correctMadlib = { slot1: "word4", slot2: "word5" };
+        function showPopup(element, text, imageSrc) {
+            document.getElementById('popup-text').innerText = text;
+            var imgElement = document.getElementById('popup-image');
+            if (imageSrc) {
+                imgElement.src = imageSrc;
+                imgElement.style.display = 'block';
+            } else {
+                imgElement.style.display = 'none';
+            }
+            document.getElementById('popup').style.display = 'block';
+            element.classList.remove('unclicked');
+            element.classList.add('clicked');
+        }
+        
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+        
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+        
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+        
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+            if (draggedElement) {
+                event.target.textContent = draggedElement.textContent;
+                event.target.setAttribute("data-word", data);
+            }
+        }
         
         function checkCharacters() {
+            const correctCharacters = { first1: "word1", last1: "word2", first2: "word3", last2: "word4" };
             for (let id in correctCharacters) {
                 if (document.getElementById(id).getAttribute("data-word") !== correctCharacters[id]) {
                     alert("Incorrect characters!");
@@ -84,6 +169,7 @@
         }
         
         function checkSolution() {
+            const correctMadlib = { slot1: "word1", slot2: "word2", slot3: "word5", slot4: "word3",  slot5: "word4"};
             for (let id in correctMadlib) {
                 if (document.getElementById(id).getAttribute("data-word") !== correctMadlib[id]) {
                     alert("Try again!");
