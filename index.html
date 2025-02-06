@@ -158,7 +158,7 @@
         }
         
         function checkCharacters() {
-            const correctCharacters = { first1: "word1", last1: "word2", first2: "word3", last2: "word4" };
+            const correctCharacters = { first1: "word1", last1: "word2", first2: "word3", last2: "word10" };
             for (let id in correctCharacters) {
                 if (document.getElementById(id).getAttribute("data-word") !== correctCharacters[id]) {
                     alert("Incorrect characters!");
@@ -169,7 +169,7 @@
         }
         
         function checkSolution() {
-            const correctMadlib = { slot1: "word1", slot2: "word2", slot3: "word5", slot4: "word3",  slot5: "word4"};
+            const correctMadlib = { slot1: "word1", slot2: "word2", slot3: "word5", slot4: "word3",  slot5: "word10"};
             for (let id in correctMadlib) {
                 if (document.getElementById(id).getAttribute("data-word") !== correctMadlib[id]) {
                     alert("Try again!");
